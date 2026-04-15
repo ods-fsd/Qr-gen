@@ -44,7 +44,7 @@
                 margin: 0 auto !important;
             }
 
-            @page { margin: 0; size: auto; } /* Довіряємо драйверу Zebra */
+            @page { margin: 0; size: auto; }
         }
     </style>
 </head>
@@ -57,31 +57,53 @@
             </div>
             <div>
                 <h1 class="text-2xl font-black text-gray-800">Drukarnia QR - Regały (Zebra)</h1>
-                <p class="text-gray-500 text-sm">Czyste kody QR bez napisów. Drukuj każdy osobno.</p>
+                <p class="text-gray-500 text-sm">Czyste kody QR bez napisów (zaktualizowana baza). Drukuj każdy osobno.</p>
             </div>
         </div>
 
-        <div id="locationsList" class="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[70vh] overflow-y-auto pr-2">
+        <div id="locationsList" class="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
             </div>
     </div>
 
     <div id="printArea" class="hidden"></div>
 
     <script>
-        // Масив усіх твоїх локацій
+        // АКТУАЛЬНИЙ МАСИВ ЛОКАЦІЙ З ТВОГО INDEX.HTML
         const LOCATIONS = [
-            "Pod kominem Palety", "Pod kominem Regał", "Pod Cynkownia",
-            "OW Hala-1 Regał 1", "OW Hala-1 Regał 2", "OW Hala-1 Regał 3",
-            "OW Hala-1 Regał 4", "OW Hala-1 Regał 5", "OW Hala-1 Regał 6",
-            "OW Hala-1 Regał 7", "OW Hala-1 Regał 8", "OW Hala-1 Regał 9",
-            "OW Hala-1 Regał 10", "OW Hala-1 Regał 11", "OW Hala-1 Regał 12",
-            "OW Hala-1 Regał 13", "OW Hala-1 Regał 14", "OW Hala-1 Regał Fioletowy",
-            "OW Hala-1 Regał koło Śmietnika", "OW Hala-2 Ściągaczy",
-            "OW Hala-2 Regał 1", "OW Hala-2 Regał 2", "OW Hala-2 Regał 3",
-            "OW Hala-2 Regał 4", "OW Hala-2 Regał 5", "OW Hala-2 Regał 6",
-            "OW Hala-2 Regał 7", "OW Hala-2 Regał 8", "OW Hala-2 Regał 9",
-            "OW Hala-2 Regał 10", "OW Hala-2 Regał 11", "OW Hala-2 Regał 12",
-            "OW Hala-2 Nierdzewna"
+            "Pod kominem | Palety",
+            "Pod kominem | Regał",
+            "Strefa Pod Cynkownią",
+            "Strefa Pod Halą",
+            "Hala-OW1 | Regał 1",
+            "Hala-OW1 | Regał 2",
+            "Hala-OW1 | Regał 3",
+            "Hala-OW1 | Regał 4",
+            "Hala-OW1 | Regał 5",
+            "Hala-OW1 | Regał 6",
+            "Hala-OW1 | Regał 7",
+            "Hala-OW1 | Regał 8",
+            "Hala-OW1 | Regał 9",
+            "Hala-OW1 | Regał 10",
+            "Hala-OW1 | Regał 11",
+            "Hala-OW1 | Regał 12",
+            "Hala-OW1 | Regał 13",
+            "Hala-OW1 | Regał 14",
+            "Hala-OW1 | Regał 15",
+            "Hala-OW1 | Reg.Fioletowy",
+            "Hala-OW2 | Reg.Ściągaczy",
+            "Hala-OW2 | Regał 1",
+            "Hala-OW2 | Regał 2",
+            "Hala-OW2 | Regał 3",
+            "Hala-OW2 | Regał 4",
+            "Hala-OW2 | Regał 5",
+            "Hala-OW2 | Regał 6",
+            "Hala-OW2 | Regał 7",
+            "Hala-OW2 | Regał 8",
+            "Hala-OW2 | Regał 9",
+            "Hala-OW2 | Regał 10",
+            "Hala-OW2 | Regał 11",
+            "Hala-OW2 | Regał 12",
+            "Hala-OW2 | Reg.Nierdzewne"
         ];
 
         // Рендеримо список кнопок
@@ -120,7 +142,7 @@
 
             area.appendChild(card);
 
-            // Даємо час на рендер Canvas (особливо важливо для старих комп'ютерів)
+            // Даємо час на рендер Canvas
             setTimeout(() => {
                 window.print();
                 area.classList.add('hidden'); // Ховаємо назад після друку
